@@ -352,7 +352,8 @@ mongoose.connect(config.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: 
 
         if (config.PAYMENT_SCRIPT.ENABLED_AUTOPAYMENT) {
           if (level === cycleInfo.first + lodash.max([5, config.PAYMENT_SCRIPT.AUTOPAYMENT_LEVEL])) {
-            const previousCycleInfo = await getCycleInfo(block.metadata.level.cycle - 1);
+            const paymentCycle =  - lodash.max([1, config.PAYMENT_SCRIPT.PAYMENT_CYCLE]);
+            const previousCycleInfo = await getCycleInfo(block.metadata.level.cycle - paymentCycle);
             await async.eachLimit(config.PAYMENT_SCRIPT.BAKER_PRIVATE_KEYS, 1, async (privateKey) => {
               const bakerKeys = mpapi.crypto.extractKeys(privateKey);
               await payment.runPaymentScript({ bakerKeys, lastLevel: previousCycleInfo.last });

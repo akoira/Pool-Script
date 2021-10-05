@@ -8,6 +8,7 @@ module.exports = {
   "PAYMENT_SCRIPT": {
     "ENABLED_AUTOPAYMENT": true, // You need to make payments manually if this option is disabled.
     "AUTOPAYMENT_LEVEL": 10, // 5 is a minimal level
+    "PAYMENT_CYCLE": 5, //cycle for payment, number for cycles before the current one, needs to define which awards should be distributed
     "BAKER_PRIVATE_KEYS": [
       "privatekey"
     ],
