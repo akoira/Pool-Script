@@ -318,8 +318,8 @@ const _rewards = async (block) => {
 const _payment = async (block) => {
     const level = block.header.level;
     const cycle = block.metadata.level.cycle;
-    const payAtBlock = level + lodash.max([5, config.PAYMENT_SCRIPT.AUTOPAYMENT_LEVEL]);
-    if (block.level === payAtBlock) {
+    const payAtBlock = cycle * 1440 + lodash.max([5, config.PAYMENT_SCRIPT.AUTOPAYMENT_LEVEL]);
+    if (level === payAtBlock) {
         const paymentCycle = cycle - lodash.max([1, config.PAYMENT_SCRIPT.PAYMENT_CYCLE]);
         const previousCycleInfo = await getCycleInfo(paymentCycle);
         await async.eachLimit(config.PAYMENT_SCRIPT.BAKER_PRIVATE_KEYS, 1, async (privateKey) => {
