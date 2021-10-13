@@ -44,7 +44,7 @@ const runPaymentScript = async ({ bakerKeys, lastLevel }) => {
 
     let amountPlex = amountPlexGross * (1 - commission);
     if (amountPlex >= config.PAYMENT_SCRIPT.MIN_PAYMENT_AMOUNT) {
-      const fee = 1;
+      const fee = 0.0001;
       const gasLimit = 0.010307;
       const storageLimit = 0.000257;
       operations.push({
