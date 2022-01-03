@@ -1,3 +1,15 @@
+401
+401 * 1440 - 6 * 1440 =  
+
+395: PAYED
+396: 570240
+397:
+398:
+399:
+400:  
+401: 577440
+402: 578880
+
 Before starting be sure that a blockchain node has been installed 
 
 Clone existing repository
