@@ -231,7 +231,7 @@ mongoose.connect(config.MONGO_URL, {
 }, async (error) => {
     if (error) throw error;
 
-    await _main();
+    await _rewards();
 });
 
 const getBlockConstants = async (level) => {
@@ -253,8 +253,8 @@ const getBlockConstants = async (level) => {
 
 
 
-const _main = async () => {
-    const block = await getBlock(1112062);
+const _rewards = async () => {
+    const block = await getBlock(1111921);
     const level = block.header.level;
     const nextBlock = await getBlock(level + 1);
     // const baker = block.metadata.baker;
@@ -262,6 +262,11 @@ const _main = async () => {
     const blockEndorsers = getBlockEndorsers(nextBlock.operations);
     console.log(blockEndorsers.length)
     const rewardsB = await getRewardsForBaker(block, baker, blockEndorsers);
-    // const rewardsE = await getRewardsForEndorser(block, endorser.address, endorser.slots);
-
+    const rewardsE = await getRewardsForEndorser(block, baker, 1);
 }
+
+// const _payment = async () => {
+//     const lastLevel =
+// }
+
+//mp1CGpXtA9b74HpQ9fgyDA8W3pkUh6FMK2h4
